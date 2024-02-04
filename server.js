@@ -12,7 +12,7 @@ app.use(cors())
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT
-const dataFile = 'server/data.json'
+const dataFile = 'data.json'
 
 const options = {
   expiresIn: process.env.EXPIRES_IN, 
@@ -26,7 +26,7 @@ const readData = () =>{
 }
 
 const postData = () =>{
-  const rawData = fs.readFileSync("server/db.json");
+  const rawData = fs.readFileSync("db.json");
   return JSON.parse(rawData);
 }
 
@@ -35,7 +35,7 @@ const writeData = (data) => {
 };
 
 const writePostData = (data) => {
-  fs.writeFileSync("server/db.json", JSON.stringify(data, null, 2));
+  fs.writeFileSync("db.json", JSON.stringify(data, null, 2));
 };
 
 app.get('/', async(req, res) =>{
